@@ -1,13 +1,12 @@
-package tidus.users_control;
+package com.userscontrol;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class UsersControlApplication {
+public class UserscontrolApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(UsersControlApplication.class, args);
+		SpringApplication.run(UserscontrolApplication.class, args);
 	}
-
 }

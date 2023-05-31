@@ -1,10 +1,10 @@
-package tidus.users_control;
+package com.userscontrol;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class UsersControlApplicationTests {
+class UserscontrolApplicationTests {
 
 	@Test
 	void contextLoads() {

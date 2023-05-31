@@ -1,4 +1,4 @@
-package tidus.users_control.controller;
+package com.userscontrol.controller;
 
 import java.util.List;
 
@@ -14,9 +14,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.userscontrol.model.User;
+import com.userscontrol.service.UserService;
+
 import jakarta.validation.Valid;
-import tidus.users_control.model.User;
-import tidus.users_control.service.UserService;
 
 @RestController
 @RequestMapping("/api/users")
@@ -27,32 +28,26 @@ public class UserRestController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public User saveUser(@Valid @RequestBody User user){
-        return userService.create(user);
-    }
-
-    @GetMapping("/{id}")
-    @ResponseStatus(HttpStatus.OK)
-    public User getUser(@PathVariable("id") Long id){
-        return userService.findById(id);
+    public User saveUser(@RequestBody @Valid User user){
+        return userService.saveUser(user);
     }
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllUsers(){
-        return userService.getUsers();
+    public List<User> findAllUsers(){
+        return userService.getAllUsers();
     }
 
     @PutMapping("/{id}")
     @ResponseStatus(HttpStatus.OK)
-    public User updateUser(@Valid @RequestBody User user, @PathVariable("id") Long id){
-        return userService.updateUser(id, user);
+    public User updateUser(@PathVariable("id") Long id, @RequestBody @Valid User user){
+        return userService.update(id, user);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteUser(@PathVariable("id") Long id){
-        userService.deleteUser(id);
+    public void deleteUser(@PathVariable Long id){
+        userService.delete(id);
     }
 
 }
